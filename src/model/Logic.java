@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PFont;
 
 public class Logic {
 	
@@ -12,6 +14,7 @@ public class Logic {
 	private LinkedList<Dog> listOfDogs;
 	private String [] text1, text2;
 	private ArrayList<String> firstVariables, secondVariables, id, names, breeds, date;
+	private PFont fontBold, fontRegular;
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -29,6 +32,11 @@ public class Logic {
 		loadText();
 		textToVariables();
 		addDog();
+
+		
+		//Fonts
+		fontBold = app.createFont("./data/fonts/Poppins-Bold.ttf", 32);
+		fontRegular = app.createFont("./data/fonts/Poppins-Regular.ttf", 22);
 		
 	}
 
@@ -103,8 +111,35 @@ public class Logic {
 	}
 	
 	public void draw() {
-		
-
+		//BACKGROUND OF APP
+			app.background(208, 248, 252);
+			//Title
+			app.fill(255);
+			app.rect(40, 20, 1120, 60);
+			app.fill(96);
+			app.textAlign(PConstants.CENTER);
+			app.textFont(fontBold);
+			app.text("PELUDITOS SIN HOGAR", 600, 60);
+			//Rectangles for each category
+			for (int i = 0; i < 5; i++) {
+				app.fill(255);
+				app.stroke(96);
+				app.strokeWeight(2);
+				app.rect((i*225)+40, 105, 225, 570);
+			}
+			//Titles of the categories
+			app.textFont(fontBold);
+			app.textSize(18);
+			app.fill(96);
+			app.text("ID", 160, 135);						app.text("Nombre", 380, 135);		
+			app.text("Raza", 600, 135);					app.text("Nacimiento", 820, 135);
+			app.text("Foto", 1060, 135);	
+			//Instructions to organize
+			app.textSize(12);
+			app.text("(Tecla I)", 160, 155);				app.text("(Tecla N)", 380, 155);
+			app.text("(Tecla R)", 600, 155);				app.text("(Tecla F)", 820, 155);				
+			app.text("(Tecla J)", 1060, 155);
+			
 	}
 	
 	public void sortLists() {

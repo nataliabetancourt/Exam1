@@ -7,6 +7,7 @@ public class Dog {
 	private PApplet app;
 	private int posX, posY;
 	private String id, name, breed, date;
+	private String [] text;
 
 	public Dog(PApplet app, String id, String name, String breed, String date) {
 		this.app = app;
@@ -21,11 +22,4 @@ public class Dog {
 
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
 }

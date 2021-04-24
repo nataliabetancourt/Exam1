@@ -2,6 +2,7 @@ package controller;
 
 import model.Logic;
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Controller {
 	
@@ -15,8 +16,7 @@ public class Controller {
 	}
 	
 	public void draw() {
-		
-
+		logic.draw();
 	}
 	
 	public void sortLists() {

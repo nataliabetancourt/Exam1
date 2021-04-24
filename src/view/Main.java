@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import processing.core.PApplet;
+import processing.core.PFont;
 
 
 public class Main extends PApplet{
@@ -26,8 +27,7 @@ public class Main extends PApplet{
 	
 	@Override
 	public void draw() {
-		background(255);
-		
+		controller.draw();
 	}
 	
 	@Override
