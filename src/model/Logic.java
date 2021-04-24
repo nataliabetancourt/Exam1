@@ -8,13 +8,15 @@ import java.util.LinkedList;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PFont;
+import processing.core.PImage;
 
 public class Logic {
 	
 	private PApplet app;
 	private String [] text1, text2;
 	private LinkedList<Dog> listOfDogs;
-	private ArrayList<String> firstVariables, secondVariables, id, names, breeds, date;
+	private ArrayList<String> firstVariables, secondVariables, id, names, breeds, date, dogImg;
+	private PImage labrador, germanShepherd, bulldog, rottweiler, husky;
 	private PFont fontBold, fontRegular;
 	
 	//Classes of variables of the dogs
@@ -33,6 +35,7 @@ public class Logic {
 		date = new ArrayList<>();
 		firstVariables = new ArrayList<>();
 		secondVariables = new ArrayList<>();
+		dogImg = new ArrayList<>();
 		
 		//Classes
 		dogName = new DogName();
@@ -40,13 +43,17 @@ public class Logic {
 		dogDate = new DogDate();
 		
 		//Text
+		addImgList();
 		loadText();
 		textToVariables();
 		addDog();
 		
+		
 		//Fonts
 		fontBold = app.createFont("./data/fonts/Poppins-Bold.ttf", 32);
 		fontRegular = app.createFont("./data/fonts/Poppins-Regular.ttf", 22);
+		
+		System.out.println(dogImg.size());
 		
 	}
 
@@ -54,6 +61,17 @@ public class Logic {
 		//Loading the texts from data imports
 		text1 = app.loadStrings("./data/imports/TXT 1.txt");
 		text2 = app.loadStrings("./data/imports/TXT 2.txt");
+	}
+
+	private void addImgList() {
+		/*This method is used to add the information necessary for a loadImage to a list of strings. 
+		 * The parameters receive the string and use it to load the image of the corresponding dog*/
+		dogImg.add("./data/img/labrador.jpg");				
+		dogImg.add("./data/img/germanshepherd.jpg");	
+		dogImg.add("./data/img/bulldog.jpg");								
+		dogImg.add("./data/img/rottweiler.jpg");
+		dogImg.add("./data/img/husky.jpg");
+
 	}
 	
 	private void textToVariables() {
@@ -110,14 +128,15 @@ public class Logic {
 	
 	private void addDog() {
 		//Going through one list to add the attributes to the dog (because all the lists have 5 elements)
-		for (int i = 0; i < id.size(); i++) {
+		for (int i = 0; i < 5; i++) {
 			String numID = id.get(i);
 			String name = names.get(i);
 			String breed = breeds.get(i);
 			String dateBirth = date.get(i+1);
+			String img = dogImg.get(i);
 						
 			//Adding the dogs to the list
-			listOfDogs.add(new Dog(app, numID, name, breed, dateBirth));
+			listOfDogs.add(new Dog(app, numID, name, breed, dateBirth, img));
 		}		
 	}
 	
