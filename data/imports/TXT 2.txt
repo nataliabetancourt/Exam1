@@ -1,0 +1,6 @@
+2 Pastor-aleman 14-06-2010
+3 Bulldog 10-02-2019
+1 Labrador-retriever 11-04-2019
+5 Husky-siberiano 09-02-20174 
+4 Rottweiler 05-12-2020
+
