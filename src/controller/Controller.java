@@ -19,8 +19,8 @@ public class Controller {
 		logic.draw();
 	}
 	
-	public void sortLists() {
-		
+	public void sortLists(char key) {
+		logic.sortLists(key);
 
 	}
 

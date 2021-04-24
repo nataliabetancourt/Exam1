@@ -32,6 +32,6 @@ public class Main extends PApplet{
 	
 	@Override
 	public void keyPressed() {
-		
+		controller.sortLists(key);
 	}
 }

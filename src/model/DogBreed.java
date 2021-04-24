@@ -4,13 +4,9 @@ import java.util.Comparator;
 
 public class DogBreed implements Comparator <Dog>{
 
-	public DogBreed() {
-		
-	}
-
 	@Override
-	public int compare(Dog o1, Dog o2) {
-		return 0;
+	public int compare(Dog dog1, Dog dog2) {
+		return dog1.getBreed().compareTo(dog2.getBreed());
 	}
 
 }
