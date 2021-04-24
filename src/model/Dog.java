@@ -5,10 +5,10 @@ import processing.core.PApplet;
 public class Dog {
 	
 	private PApplet app;
-	private int id, posX, posY;
-	private String name, breed, date;
+	private int posX, posY;
+	private String id, name, breed, date;
 
-	public Dog(PApplet app, int id, String name, String breed, String date) {
+	public Dog(PApplet app, String id, String name, String breed, String date) {
 		this.app = app;
 		this.id = id;
 		this.name = name;
@@ -21,4 +21,11 @@ public class Dog {
 
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
 }
