@@ -70,6 +70,8 @@ public class Dog implements Comparable<Dog>{
 		return date;
 	}
 	
-	
+	public String variablesTogether() {
+		return id + " " + name.toLowerCase() + " " + breed.toLowerCase() + " " + date;	
+	}
 
 }

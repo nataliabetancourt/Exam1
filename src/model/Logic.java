@@ -13,10 +13,9 @@ import processing.core.PImage;
 public class Logic {
 	
 	private PApplet app;
-	private String [] text1, text2;
+	private String [] text1, text2, saveIDOrder, saveNameOrder, saveBreedOrder, saveDateOrder;
 	private LinkedList<Dog> listOfDogs;
 	private ArrayList<String> firstVariables, secondVariables, id, names, breeds, date, dogImg;
-	private PImage labrador, germanShepherd, bulldog, rottweiler, husky;
 	private PFont fontBold, fontRegular;
 	
 	//Classes of variables of the dogs
@@ -36,6 +35,7 @@ public class Logic {
 		firstVariables = new ArrayList<>();
 		secondVariables = new ArrayList<>();
 		dogImg = new ArrayList<>();
+
 		
 		//Classes
 		dogName = new DogName();
@@ -48,12 +48,15 @@ public class Logic {
 		textToVariables();
 		addDog();
 		
-		
 		//Fonts
 		fontBold = app.createFont("./data/fonts/Poppins-Bold.ttf", 32);
 		fontRegular = app.createFont("./data/fonts/Poppins-Regular.ttf", 22);
 		
-		System.out.println(dogImg.size());
+		//Arrays
+		saveIDOrder = new String [listOfDogs.size()];
+		saveNameOrder = new String [listOfDogs.size()];
+		saveBreedOrder = new String [listOfDogs.size()];
+		saveDateOrder = new String [listOfDogs.size()];
 		
 	}
 
@@ -181,24 +184,50 @@ public class Logic {
 		switch (key) {
 		case 'i':
 			Collections.sort(listOfDogs);
+			for (int i = 0; i < listOfDogs.size(); i++) {
+				//Adding the variables together (through a method in dog) to an array that will later be saved
+				saveIDOrder[i]= listOfDogs.get(i).variablesTogether();
+			}
 			break;
 		case 'n':
 			Collections.sort(listOfDogs, dogName);
+			for (int i = 0; i < listOfDogs.size(); i++) {
+				//Adding the variables together (through a method in dog) to an array that will later be saved
+				saveNameOrder[i]= listOfDogs.get(i).variablesTogether();
+			}
 			break;	
 		case 'r':
 			Collections.sort(listOfDogs, dogBreed);
+			for (int i = 0; i < listOfDogs.size(); i++) {
+				//Adding the variables together (through a method in dog) to an array that will later be saved
+				saveBreedOrder[i]= listOfDogs.get(i).variablesTogether();
+			}
 			break;	
 		case 'f':
 			Collections.sort(listOfDogs, dogDate);
+			for (int i = 0; i < listOfDogs.size(); i++) {
+				//Adding the variables together (through a method in dog) to an array that will later be saved
+				saveDateOrder[i]= listOfDogs.get(i).variablesTogether();
+			}
 			break;
 		default:
 			break;
 		}
+		
+		saveText();
 	}
 	
 	public void saveText() {
+		//SAVING THE DIFFERENT ORDERS
+			//Saving the new ID text
+			app.saveStrings("./data/exports/ID_Order.txt", saveIDOrder);
+			//Saving the new name text
+			app.saveStrings("./data/exports/Name_Order.txt", saveNameOrder);
+			//Saving the new breed text
+			app.saveStrings("./data/exports/Breed_Order.txt", saveBreedOrder);
+			//Saving the new date text
+			app.saveStrings("./data/exports/Date_Order.txt", saveDateOrder);
 		
-
 	}
 	
 }
